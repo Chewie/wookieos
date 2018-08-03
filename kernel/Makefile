@@ -20,7 +20,7 @@ wookieos.iso: wookieos.bin
 	grub-mkrescue -o $@ iso
 
 wookieos.bin: $(OBJS)
-	$(CC) -T linker.ld $(LDFLAGS) -o $@ $^ -lgcc
+	$(CC) -T $(ARCHDIR)/linker.ld $(LDFLAGS) -o $@ $^ -lgcc
 
 %.o: %.S
 	$(CC) -c $^ -o $@
