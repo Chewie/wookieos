@@ -1,7 +1,7 @@
 #include <stddef.h>
 #include <stdint.h>
 
-#include "arch/x86/vga.h"
+#include "vga.h"
 
 #define COM1 0x3F8
 

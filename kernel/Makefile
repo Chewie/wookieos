@@ -1,15 +1,10 @@
-CC = i686-elf-gcc
-AS = i686-elf-as
-
 CFLAGS = -std=gnu99 -ffreestanding -Wall -Wextra
 LDFLAGS = -ffreestanding -nostdlib
 
-ARCH = x86
-ARCHDIR = arch/$(ARCH)
+TARGET_ARCH = -m32
+TARGET_MACH = -m32
 
-include $(ARCHDIR)/make.config
-
-OBJS = $(ARCH_OBJS) main.o
+OBJS = boot.o vga.o main.o
 
 .PHONY: all clean
 
@@ -20,13 +15,7 @@ wookieos.iso: wookieos.bin
 	grub-mkrescue -o $@ iso
 
 wookieos.bin: $(OBJS)
-	$(CC) -T $(ARCHDIR)/linker.ld $(LDFLAGS) -o $@ $^ -lgcc
-
-%.o: %.S
-	$(CC) -c $^ -o $@
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+	$(CC) -T linker.ld $(LDFLAGS) $(TARGET_ARCH) -o $@ $^ -lgcc
 
 clean:
 	rm -f $(OBJS) wookieos.iso wookieos.bin
