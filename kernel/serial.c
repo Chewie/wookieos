@@ -20,9 +20,7 @@ void serial_writechar(char c)
 
 void serial_write(const char *s)
 {
-  const char *current;
-
-  for (current = s; *current; ++current)
-    serial_writechar(*current);
+  while (*s)
+    serial_writechar(*s++);
 }
 

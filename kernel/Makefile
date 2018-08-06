@@ -4,7 +4,7 @@ LDFLAGS = -ffreestanding -nostdlib
 TARGET_ARCH = -m32
 TARGET_MACH = -m32
 
-OBJS = boot.o vga.o serial.o main.o
+OBJS = boot.o vga.o serial.o printf.o io.o main.o
 
 .PHONY: all clean
 

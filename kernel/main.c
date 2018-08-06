@@ -4,6 +4,7 @@
 #include "multiboot.h"
 #include "vga.h"
 #include "serial.h"
+#include "printf.h"
 
 
 
@@ -13,10 +14,10 @@ void kernel_main(uint32_t magic, multiboot_info_t * mbi)
   (void) mbi;
 
   serial_init();
-  serial_write("bonjour\r\n");
 
   vga_init();
-  vga_write("BONJOUR MDR COMMENT CA VA ?");
+  puts("Bonjour !\n");
+  printf("mon chiffre prefere est %d\n", 42);
 
   for (;;)
     asm("hlt");

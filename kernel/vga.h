@@ -35,6 +35,11 @@ static inline uint16_t vga_entry(unsigned char c, uint8_t color)
 {
   return (uint16_t) c | (uint16_t) color << 8;
 }
+
+void vga_enable_cursor(uint8_t cursor_start, uint8_t cursor_end);
+
+void vga_update_cursor(int x, int y);
+
 void vga_init(void);
 
 void vga_writechar(unsigned char c);
