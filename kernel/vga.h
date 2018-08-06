@@ -35,19 +35,10 @@ static inline uint16_t vga_entry(unsigned char c, uint8_t color)
 {
   return (uint16_t) c | (uint16_t) color << 8;
 }
+void vga_init(void);
 
-struct vga_info
-{
-  uint8_t current_color;
-  size_t x;
-  size_t y;
-  uint16_t *fb;
-};
+void vga_writechar(unsigned char c);
 
-struct vga_info *vga_init(void);
-
-void vga_writechar(struct vga_info *vi, unsigned char c);
-
-void vga_write(struct vga_info *vi, char *s);
+void vga_write(char *s);
 
 #endif /* end of include guard: VGA_H_ */

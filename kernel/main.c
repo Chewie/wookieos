@@ -32,18 +32,15 @@ static inline void serial_write(char *s)
 
 void kernel_main(uint32_t magic, multiboot_info_t * mbi)
 {
-  struct vga_info *vi;
-
-  if (magic == 0x2BADB002)
   (void) magic;
   (void) mbi;
 
   serial_init();
   serial_write("bonjour\r\n");
 
-  vi = vga_init();
+  vga_init();
 
-  vga_write(vi, "BONJOUR MDR COMMENT CA VA ?");
+  vga_write("BONJOUR MDR COMMENT CA VA ?");
 
   for (;;)
     asm("hlt");
