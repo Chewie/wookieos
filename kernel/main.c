@@ -18,6 +18,7 @@ void kernel_main(uint32_t magic, multiboot_info_t * mbi)
   vga_init();
   puts("Bonjour !\n");
   printf("mon chiffre prefere est %d\n", 42);
+  printf("magic vaut %X\n", magic);
 
   for (;;)
     asm("hlt");

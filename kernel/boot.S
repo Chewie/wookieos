@@ -33,13 +33,13 @@ _start:
 
 protected_start:
 	# Reload all other segments
-	movw $(GDT_KDATA << 3), %ax # Data segment selector
-	movw %ax, %ds
-	movw %ax, %ss
-	movw $0, %ax # Null segment selector
-	mov %ax, %es
-	mov %ax, %fs
-	mov %ax, %gs
+	movw $(GDT_KDATA << 3), %cx # Data segment selector
+	movw %cx, %ds
+	movw %cx, %ss
+	movw $0, %cx # Null segment selector
+	mov %cx, %es
+	mov %cx, %fs
+	mov %cx, %gs
 
 	lea stack_top, %esp
 
