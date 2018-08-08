@@ -27,4 +27,5 @@ SECTIONS
     *(COMMON)
     *(.bss)
   }
+  PROVIDE(_end = .);
 }
