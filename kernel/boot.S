@@ -11,6 +11,7 @@
 
 # Multiboot section
 .section .multiboot
+multiboot_header:
 .align 4
 .long MULTIBOOT_HEADER_MAGIC
 .long MULTIBOOT_FLAGS
