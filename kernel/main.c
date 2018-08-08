@@ -5,6 +5,7 @@
 #include "vga.h"
 #include "serial.h"
 #include "printf.h"
+#include "memory.h"
 
 
 static void print_mmap(multiboot_info_t *mbi)
@@ -65,6 +66,8 @@ void kernel_main(uint32_t magic, multiboot_info_t *mbi)
 
   printf("_end = 0x%x\n", _end);
 
+  uintptr_t first = find_first_addr(mbi);
+  printf("[INFO] First allocatable page: 0x%x\n", first);
 
   for (;;)
     asm("hlt");
